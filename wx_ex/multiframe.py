@@ -9,7 +9,7 @@ from wx import Panel
 import matplotlib
 from functools import partial
 
-from wx_ex.multiplot import MultiPlotPanel
+from wx_ex.multipanel import MultiPlotPanel
 from wxmplot.plotpanel import PlotPanel
 from wxmplot.baseframe import BaseFrame
 from wxmplot.utils import MenuItem
