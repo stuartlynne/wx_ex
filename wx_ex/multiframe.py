@@ -22,6 +22,8 @@ class MultiPlotFrame(BaseFrame):
 
     def __init__(self, parent=None, rows=1, cols=1, framesize=None, panelsize=(400, 320), panelopts=None, **kws):
 
+        kws['style'] = wx.DEFAULT_FRAME_STYLE|wx.RESIZE_BORDER
+
         BaseFrame.__init__(self, parent=parent, title  = '2D Plot Array Frame', size=framesize, **kws)
 
         if framesize is None:
