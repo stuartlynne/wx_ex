@@ -26,44 +26,55 @@ Derived Panel version of wxmplot StackedPlotPanel.
 
 ## Heirarchy
 
+Three levels with specific classes:
 
-- TrainingApp
-    - wx.App
-
-Top level PlotFrame - two columns, left for devices sub-panels, right for stacked multiplot
-    - wx_ex.BoxSizerVerticalEx
-        - wx_ex.MultiPlotFrame
-            - wx_ex.PlotFrameEx
-                - wxmplot.PlotFrame
-                    - wxmplot.BaseFrame
-                        - wx.Frame
-
-For each reporting device, e.g. HRM, PM, FEC:
-
-- XXXPanel
-    wx.Panel
-
-Each panel builds up plots using PlotPanelEx
-
-- wx_ex.WrapSizerPanelEx
-    - wx_ex.MultiPlotPanelEx
-        - wx_ex.PlotPanelex
-            - wxmplot.PlotPanel
-                - wxmplot.BasePanel
-
-- wx_ex.GridBagPanelEx
-    - wx_ex.MultiPlotPanelEx
-        - wx_ex.PlotPanelEx
+- Top Window - wxmplot.BaseFrame derived class for overall layout.
+- Column 1 - bespoke wx.Panel derived classes for devices
+- Column 2 - bespoke wx.Panel derived classes for stacked plot
+- Bottom - plotting is done with wxmplot.PlotPanel derived classes.
 
 
-For Stacked Plot column:
+## MultiFrameEx
 
-- StackedPlotPanel
-    wx.Panel
+- wx.Frame(... wx.Window)
+- wxmplot.BaseFrame(wx.Frame)
+- wxmplot.PlotFrame(wxmplot.BaseFrame)
+- wx\_ex.MultiFrameEx(wxmplot.BaseFrame)
+- wx\_ex.BoxFrameEx(wx\_ex.MultiFrameEx)
 
-Uses StackedMultiPlotEx to build the stack of plots:
+## PlotPanelEx
 
-- wx_ex.StackedMultiPlotEx
-    - wx_ex.StackedPlotEx
-        - 
+- wx.Panel(... wx.Window)
+- wxmplot.BasePanel(wx.Panel)
+- wxmplot.PlotPanel(wxmplot.BasePanel)
+- wx\_ex.PlotPanelEx(wxmplot.PlotFrame)
+- wx\_ex.MultiPlotPanelEx(wx\_ex.PlotPanelEx)
+- wx\_ex.GridBagSizerPanelEx(wx\_ex.MultiPlotPanelEx)
+- wx\_ex.WrapSizerPanelEx(wx\_ex.MultiPlotPanelEx)
+
+## StackedPlotPanelEx
+
+- wx.Panel(... wx.Window)
+- wxmplot.BasePanel(wx.Panel)
+- wxmplot.PlotPanel(wxmplot.BasePanel)
+- wx\_ex.PlotPanelEx(wxmplot.PlotFrame)
+- wx\_ex.StackedPlotPanelEx(wx\_ex.PlotPanelEx)
+
+## Column 1 - Devices
+
+Each device type (HRM, PM, FEC) has its own class:
+
+- wx\_ex.HRMPanel(wx.Panel)
+- wx\_ex.PMPanel(wx.Panel)
+- wx\_ex.FECPanel(wx.Panel)
+
+These are created to contain various PlotPanelEx derived plotting panels.
+
+They are added to the MultiFrameEx sizer.
+
+## Colum  2 - Stacked Plots
+
+A single(?) StackedPlots panel is created to contain multiple StackedPlotEx panels.
+
+- wx\_ex.StackedPlots(wx.Panel)
 

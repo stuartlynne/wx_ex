@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib
 from matplotlib.ticker import NullFormatter, NullLocator
 from functools import partial
-from wx_ex.stackedpanel import StackedPlotPanel
+from wx_ex.stackedpanelex import StackedPlotPanelEx
 from wxmplot.utils import pack, MenuItem
 from wxmplot.plotpanel import PlotPanel
 from wxmplot.baseframe import BaseFrame
@@ -31,7 +31,7 @@ class StackedPlotFrame(BaseFrame):
         self.framesize = framesize
         self.panelsize = panelsize
 
-        self.stackedpanel = StackedPlotPanel(frame=self, framesize=framesize, panelsize=panelsize, ratio=ratio, **kws)
+        self.stackedpanel = StackedPlotPanelEx(frame=self, framesize=framesize, panelsize=panelsize, ratio=ratio, **kws)
 
         #self.panel = None
         #self.panel_bot = None

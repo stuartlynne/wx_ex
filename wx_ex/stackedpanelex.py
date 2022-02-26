@@ -17,7 +17,7 @@ from wxmplot.baseframe import BaseFrame
 
 
 
-class StackedPlotPanel(Panel):
+class StackedPlotPanelEx(Panel):
     """
     Top/Bottom MatPlotlib panels in a single Panel
     """

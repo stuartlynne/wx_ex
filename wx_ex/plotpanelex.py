@@ -187,7 +187,7 @@ class MultiPlotPanelEx(PlotPanelEx):
 
 
 
-class GridBagSizerPanel(MultiPlotPanelEx):
+class GridBagSizerPanelEx(MultiPlotPanelEx):
 
     def __init__(self, name=None, frame=None, parent=None, messenger=None, framesize=None, panelsize=(400, 320), panelopts=None, **kws):
         MultiPlotPanelEx.__init__(self, name=name, frame=frame, parent=parent, messenger=messenger, 
@@ -238,7 +238,7 @@ class GridBagSizerPanel(MultiPlotPanelEx):
 
 
 
-class WrapSizerPanel(MultiPlotPanelEx):
+class WrapSizerPanelEx(MultiPlotPanelEx):
 
     def __init__(self, name=None, frame=None, parent=None, messenger=None, orient=wx.HORIZONTAL, framesize=None, panelsize=(400, 320), panelopts=None, **kws):
 

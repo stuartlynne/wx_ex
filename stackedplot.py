@@ -9,7 +9,7 @@
 
 import wx
 import numpy
-from wx_ex.stackedframe import StackedPlotFrame
+from wx_ex.stackedframeex import StackedPlotFrame
 
 x = numpy.arange(0.0, 30.0, 0.1)
 noise = numpy.random.normal(size=len(x), scale=0.096)
