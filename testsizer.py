@@ -6,7 +6,6 @@ import numpy as np
 import sys
 import wx
 from wx.lib import masked
-from floatcontrol import FloatCtrl
 from wxmplot import BaseFrame
 from wxmplot import PlotPanel
 from wx_ex.plotpanelex import PlotPanelEx
@@ -162,7 +161,7 @@ class DevicePanel(MultiPlotPanelEx):
         plots = [ StatPlot(self, name=s, size=(125,100), fontsize=8, show_legend=True, messenger=messenger) for s in statlist]
         self.add_panels(plots)
         self.static_box = StaticBoxPlots(self, panels=plots, name=name, messenger=messenger, )
-        self.sizer.Add(self.static_box, flag=wx.ALIGN_CENTER|wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.EXPAND, border=0)
+        self.sizer.Add(self.static_box, flag=wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.EXPAND, border=0)
 
         #sbox = wx.StaticBox(parent, id=wx.ID_ANY, label=label)
         #sbox.SetSizer(sizer)
@@ -301,11 +300,11 @@ class TestFrame(MultiFrameEx):
         self.row1_panels = []
         self.row1_count = self.row2_count = 0
         self.row1_sizer = wx.BoxSizer(wx.VERTICAL)
-        self.main_sizer.Add(self.row1_sizer, proportion=2, flag=wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.ALIGN_CENTER|wx.EXPAND, border=0)
+        self.main_sizer.Add(self.row1_sizer, proportion=2, flag=wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.EXPAND, border=0)
 
         self.row2_panels = []
         self.row2_sizer = wx.WrapSizer(orient=wx.HORIZONTAL)
-        self.main_sizer.Add(self.row2_sizer, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.ALIGN_CENTER|wx.EXPAND, border=5)
+        self.main_sizer.Add(self.row2_sizer, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=5)
 
 
         self.SetSizer(self.main_sizer)
@@ -313,7 +312,7 @@ class TestFrame(MultiFrameEx):
         self.panel = StackedStatPlots(self, name='Trainer', size=(500,500), fontsize=20, messenger=self.write_message)
         self.panel.nstatusbar = self.sbar.GetFieldsCount()
         self.row1_panels.append(self.panel)
-        self.row1_sizer.Add(self.panel, flag=wx.ALIGN_CENTER|wx.EXPAND|wx.LEFT|wx.TOP|wx.BOTTOM)
+        self.row1_sizer.Add(self.panel, flag=wx.EXPAND|wx.LEFT|wx.TOP|wx.BOTTOM)
         self.row1_sizer.Layout()
 
         # XXX
@@ -353,7 +352,7 @@ class TestFrame(MultiFrameEx):
         super(TestFrame, self).write_message(msg, panel)
 
     def row2_add_device(self, panel):
-        self.row2_sizer.Add(panel, flag=wx.ALIGN_CENTER|wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.EXPAND, border=5)
+        self.row2_sizer.Add(panel, flag=wx.RESERVE_SPACE_EVEN_IF_HIDDEN|wx.EXPAND, border=5)
         self.row2_panels.append(panel)
         self.Layout()
 
@@ -380,7 +379,7 @@ class TestFrame(MultiFrameEx):
         #panel = TestPlot(self, name=name, size=(500,500), fontsize=20)
         panel = StackedStatPlots(self, name=name, size=(500,500), fontsize=20, messenger=self.write_message)
         self.row1_panels.append(panel)
-        self.row1_sizer.Add(panel, flag=wx.ALIGN_CENTER|wx.EXPAND|wx.LEFT|wx.TOP|wx.BOTTOM)
+        self.row1_sizer.Add(panel, flag=wx.EXPAND|wx.LEFT|wx.TOP|wx.BOTTOM)
         self.row1_sizer.Layout()
 
 
