@@ -40,7 +40,7 @@ Three levels with specific classes:
 - wxmplot.BaseFrame(wx.Frame)
 - wxmplot.PlotFrame(wxmplot.BaseFrame)
 - wx\_ex.MultiFrameEx(wxmplot.BaseFrame)
-- wx\_ex.BoxFrameEx(wx\_ex.MultiFrameEx)
+- wx\_ex.TwoColumnFrameEx(wx\_ex.MultiFrameEx) 
 
 ## PlotPanelEx
 

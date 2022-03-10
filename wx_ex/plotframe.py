@@ -20,15 +20,15 @@ class PlotFrameEx(BaseFrame):
     """
     default_panelopts = dict(labelfontsize=7, legendfontsize=6)
 
-    def __init__(self, parent=None, orient=wx.VERTICAL, framesize=None, panelsize=(400, 320), panelopts=None, **kws):
+    def __init__(self, parent=None, orient=wx.VERTICAL, framesize=(500,400), panelsize=(400, 320), panelopts=None, **kws):
 
         kws['style'] = wx.DEFAULT_FRAME_STYLE|wx.RESIZE_BORDER
         self.orient = orient
 
         BaseFrame.__init__(self, parent=parent, title  = 'MultiPlotFrameEx', size=framesize, **kws)
 
-        if framesize is None:
-            framesize = (panelsize[0]*cols, panelsize[1]*rows)
+        #if framesize is None:
+        #    framesize = (panelsize[0]*cols, panelsize[1]*rows)
         self.framesize = framesize
 
         self.panels = {}
@@ -37,15 +37,15 @@ class PlotFrameEx(BaseFrame):
         self.BuildFrame()
 
 
-    def add_panel(self, name=None, name=None, flag=wx.EXPAND|wx.ALIGN_CENTER, **kw ):
+    def add_panel(self, name=None, flag=wx.EXPAND|wx.ALIGN_CENTER, **kw ):
         self.panels[name] = panel
         self.sizer.Add(panel, **kw)
 
 ###
-    def add_text(self, name=None, x=0, y= 0, text='', name=None, **kw):
+    def add_text(self, x=0, y= 0, text='', name=None, **kw):
         self.panels[name].add_text(name=name, x=x, y=y, text=text, **kw)
 
-    def add_text_ex(self, name=None, text='', xp=0.0, yp=0.0, name=None, **kw):
+    def add_text_ex(self, text='', xp=0.0, yp=0.0, name=None, **kw):
         self.panels[name].add_text_ex(name=name, text=text, xp=xp, yp=yp, **kw)
 
     def plot(self, x, y, name=None, **kw):

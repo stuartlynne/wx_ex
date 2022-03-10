@@ -17,7 +17,7 @@ from wxmplot.baseframe import BaseFrame
 
 
 
-class StackedPlotFrame(BaseFrame):
+class StackedPlotFrameEx(BaseFrame):
     """
     Top/Bottom MatPlotlib panels in a single frame
     """
@@ -31,11 +31,19 @@ class StackedPlotFrame(BaseFrame):
         self.framesize = framesize
         self.panelsize = panelsize
 
-        self.stackedpanel = StackedPlotPanelEx(frame=self, framesize=framesize, panelsize=panelsize, ratio=ratio, **kws)
+        self.stackedpanel = StackedPlotPanelEx(parent=self, messenger=self.write_message, framesize=framesize, panelsize=panelsize, ratio=ratio, **kws)
 
         #self.panel = None
         #self.panel_bot = None
         #self.xlabel = None
+        sbar = self.CreateStatusBar(2, wx.CAPTION)
+        sfont = sbar.GetFont()
+        sfont.SetWeight(wx.BOLD)
+        sfont.SetPointSize(10)
+        sbar.SetFont(sfont)
+
+        self.SetStatusWidths([-3,-1])
+        self.SetStatusText('',0)
         self.BuildFrame()
 
     def get_panel(self, panelname):
@@ -92,17 +100,17 @@ class StackedPlotFrame(BaseFrame):
     ## create GUI
     ####
     def BuildFrame(self):
-        sbar = self.CreateStatusBar(2, wx.CAPTION)
-        sfont = sbar.GetFont()
-        sfont.SetWeight(wx.BOLD)
-        sfont.SetPointSize(10)
-        sbar.SetFont(sfont)
+#        sbar = self.CreateStatusBar(2, wx.CAPTION)
+#        sfont = sbar.GetFont()
+#        sfont.SetWeight(wx.BOLD)
+#        sfont.SetPointSize(10)
+#        sbar.SetFont(sfont)
+#
+#        self.SetStatusWidths([-3,-1])
+#        self.SetStatusText('',0)
 
-        self.SetStatusWidths([-3,-1])
-        self.SetStatusText('',0)
-
-        pack(self, self.stackedpanel.sizer())
-        self.SetSize(self.GetBestVirtualSize())
+        #pack(self, self.stackedpanel.sizer())
+        #self.SetSize(self.GetBestVirtualSize())
         self.BuildMenu()
 
     def BuildMenu(self):
